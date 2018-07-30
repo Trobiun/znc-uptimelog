@@ -71,7 +71,8 @@ protected:
         try {
             CLogger* addLogger = new CLogger(GetSavePath(), m_sLogPath, sWindow, GetUser());
             m_loggers.insert(std::make_pair(sWindow, addLogger));
-        } catch (std::ios_base::failure failure) {
+        }
+        catch (std::ios_base::failure failure) {
             PutModule(failure.what());
         }
     }
@@ -80,12 +81,14 @@ protected:
         try {
             CLogger* pLogger = m_loggers.at(sWindow);
             return pLogger;
-        } catch (std::out_of_range oor) {
+        }
+        catch (std::out_of_range oor) {
             CreateLogger(sWindow);
             try {
                 CLogger* pLogger = m_loggers.at(sWindow);
                 return pLogger;
-            } catch (std::out_of_range oor2) {
+            }
+            catch (std::out_of_range oor2) {
                 PutModule("Could not create logger.");
             }
         }
@@ -121,7 +124,8 @@ public:
         CLogger* pLogger = GetLogger(sWindow);
         if (nullptr == pLogger) {
             PutModule("Can't get logger.");
-        } else {
+        }
+        else {
             pLogger->PutLog(sLine);
         }
     }
