@@ -1,4 +1,6 @@
 MODULES_DIR = /var/lib/znc/modules
+export INCLUDES=-lcurl -Ilib
+export CXXFLAGS=-Wno-psabi
 
 all: uptimelog.so
 	
